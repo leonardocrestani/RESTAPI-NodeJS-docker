@@ -8,11 +8,6 @@ module.exports = (sequelize, DataTypes) => {
         cidade_id: DataTypes.INTEGER
     }
     const configuracoesTabela = {
-        freezeTableName: true,
-        tableName: 'Clients',
-        timestamps: true,
-        underscored: true,
-        underscoredAll: true,
         createdAt: 'created_at',
         updatedAt: 'updated_at'
     }

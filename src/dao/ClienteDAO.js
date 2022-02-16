@@ -6,6 +6,9 @@ class ClienteDAO {
     }
 
     async adiciona(cliente) {
+        let data = cliente.data_nascimento.split('/');
+        data = `${data[2]}-${data[1]}-${data[0]}`;
+        cliente.data_nascimento = data;
         return await Client.create(cliente);
     }
 
