@@ -1,9 +1,10 @@
 const ClienteDAO = require('../dao/ClienteDAO.js');
 
 class ClienteController {
-    static async listaTodos(req, res) {
+    static async listaPeloNome(req, res) {
+        const nome = req.params.nome;
         try {
-            const clientes = await ClienteDAO.listaTodos();
+            const clientes = await ClienteDAO.listaPeloNome(nome);
             return res.status(200).json(clientes);
         }
         catch(erro) {
@@ -26,7 +27,7 @@ class ClienteController {
         const dados = req.body;
         try {
             const cliente = await ClienteDAO.adiciona(dados);
-            return res.status(200).json(cliente);
+            return res.status(201).json(cliente);
         }
         catch(erro) {
             return res.status(400).json({mensagem: erro.message});

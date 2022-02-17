@@ -1,9 +1,14 @@
+require("dotenv").config({
+    path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env'
+});
+
 const configDatabase = {
-    database: 'cadastro',
-    username: 'root',
-    password: 'admin',
-    host: '127.0.0.1',
-    dialect: 'mysql'
+    database: process.env.DATABASE_NAME,
+    username: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    host: process.env.DATABASE_HOST,
+    dialect: process.env.DATABASE_DIALECT || 'mysql',
+    storage: './tests/database.sqlite'
 }
 
 module.exports = configDatabase;
