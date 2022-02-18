@@ -24,7 +24,7 @@ class CidadeController {
     }
 
     static async buscaPeloEstado(req, res) {
-        const estado = req.params.estado
+        const estado = req.params.estado;
         try {
             const cidade = await CidadeDAO.buscaPeloEstado(estado);
             return res.status(200).json(cidade);

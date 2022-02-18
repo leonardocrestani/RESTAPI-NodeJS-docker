@@ -2,11 +2,11 @@ const { Client } = require('../models');
 
 class ClienteDAO {
     async listaPeloNome(nome) {
-        return await Client.findOne({raw: true, where: {nome_completo: nome}});
+        return await Client.findOne({raw: true, attributes: {exclude: ['id', 'created_at', 'updated_at']}, where: {nome_completo: nome}});
     }
 
     async listarPeloId(idCliente) {
-        const cliente = await Client.findOne({raw:true, where: {id: idCliente}});
+        const cliente = await Client.findOne({where: {id: idCliente}});
         return cliente;
     }
 
