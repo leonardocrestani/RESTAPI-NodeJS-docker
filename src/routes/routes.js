@@ -1,9 +1,9 @@
 const bodyParser = require('body-parser');
-const rotasCidade = require('./rotasCidade.js');
-const rotasCliente = require('./rotasCliente.js');
+const cityRoutes = require('./cityRoutes.js');
+const clientRoutes = require('./clientRoutes.js');
 
 module.exports = (app) => {
     app.use(bodyParser.json(), bodyParser.urlencoded({ extended:true }));
-    app.use(rotasCidade);
-    app.use(rotasCliente);
+    app.use(cityRoutes);
+    app.use(clientRoutes);
 }

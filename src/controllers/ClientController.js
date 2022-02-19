@@ -1,10 +1,10 @@
-const ClienteDAO = require('../dao/ClienteDAO.js');
+const ClientDao = require('../dao/ClientDao.js');
 
 class ClienteController {
-    static async listaPeloNome(req, res) {
+    static async findByName(req, res) {
         const nome = req.params.nome;
         try {
-            const clientes = await ClienteDAO.listaPeloNome(nome);
+            const clientes = await ClientDao.findByName(nome);
             return res.status(200).json(clientes);
         }
         catch(erro) {
@@ -12,10 +12,10 @@ class ClienteController {
         }
     }
 
-    static async listaPeloId(req, res) {
+    static async findById(req, res) {
         const id = req.params.id;
         try {
-            const cliente = await ClienteDAO.listarPeloId(id);
+            const cliente = await ClientDao.findById(id);
             return res.status(200).json(cliente);
         }
         catch(erro) {
@@ -23,10 +23,10 @@ class ClienteController {
         }
     }
 
-    static async cadastra(req, res) {
+    static async register(req, res) {
         const dados = req.body;
         try {
-            const cliente = await ClienteDAO.adiciona(dados);
+            const cliente = await ClientDao.register(dados);
             return res.status(201).json(cliente);
         }
         catch(erro) {
@@ -34,11 +34,11 @@ class ClienteController {
         }
     }
 
-    static async atualiza(req, res) {
+    static async update(req, res) {
         const id = req.params.id;
         const nome = req.body.nome_completo;
         try {
-            await ClienteDAO.atualiza(id, nome);
+            await ClientDao.update(id, nome);
             return res.status(200).end();
         }
         catch(erro) {
@@ -49,7 +49,7 @@ class ClienteController {
     static async remove(req, res) {
         const id = req.params.id;
         try {
-            await ClienteDAO.remove(id);
+            await ClientDao.remove(id);
             return res.status(200).end();
         }
         catch(erro) {

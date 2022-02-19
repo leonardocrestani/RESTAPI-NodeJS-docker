@@ -1,16 +1,16 @@
 const { Client } = require('../models');
 
 class ClienteDAO {
-    async listaPeloNome(nome) {
+    async findByName(nome) {
         return await Client.findOne({raw: true, attributes: {exclude: ['id', 'created_at', 'updated_at']}, where: {nome_completo: nome}});
     }
 
-    async listarPeloId(idCliente) {
+    async findById(idCliente) {
         const cliente = await Client.findOne({where: {id: idCliente}});
         return cliente;
     }
 
-    async adiciona(cliente) {
+    async register(cliente) {
         const existe = await Client.findOne({where: {nome_completo: cliente.nome_completo}});
         if(existe) {
             throw new Error('Cliente ja existente');
@@ -21,7 +21,7 @@ class ClienteDAO {
         return await Client.create(cliente);
     }
     
-    async atualiza(idCliente, valor) {
+    async update(idCliente, valor) {
         const operacao = await Client.update({nome_completo: valor}, {where: {id: idCliente}});
         if(!operacao) {
             throw new Error('Nao foi possivel atualizar o nome do cliente');

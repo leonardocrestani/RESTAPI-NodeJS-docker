@@ -1,11 +1,11 @@
 const { City } = require('../models');
 
-class CidadeDAO {
-    async cadastra(dados) {
+class CityDao {
+    async register(dados) {
         return await City.create(dados);
     }
 
-    async buscaPeloNome(nome) {
+    async findByName(nome) {
         const cidade = await City.findOne({where: {nome: nome}});
         if(!cidade) {
             throw new Error('Nao foi possivel encontrar a cidade informada');
@@ -13,9 +13,9 @@ class CidadeDAO {
         return cidade;
     }
 
-    async buscaPeloEstado(estado) {
+    async findByState(estado) {
         return await City.findAll({attributes: {exclude: ['id', 'created_at', 'updated_at', 'estado']}, where: {estado: estado}});
     }
 }
 
-module.exports = new CidadeDAO;
+module.exports = new CityDao;
