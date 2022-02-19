@@ -1,8 +1,8 @@
 # Projeto RESTAPI
 
 ## Instalação inicial
-npm install
-npx sequelize db:create
+npm install <br>
+npx sequelize db:create <br>
 npx sequelize db:migrate
 
 ## Rodar API
@@ -14,13 +14,13 @@ npm test
 ## Features/endpoints
 
 ### Cidades
-- [x] Cadastro de cidade '/cidades'
-- [x] Consulta de cidade pelo nome '/cidades/{nome}'
-- [x] Consulta de cidades por estado '/cidades/estado/{estado}'
+- Cadastro de cidade '/cidades'
+- Consulta de cidade pelo nome '/cidades/{nome}'
+- Consulta de cidades por estado '/cidades/estado/{estado}'
 
 ### Clientes
-- [x] Cadastro de cliente '/clientes'
-- [x] Consulta de cliente pelo nome '/clientes/nome/{nome}'
-- [x] Consulta de cliente pelo id '/clientes/{id}'
-- [x] Atualiza nome de cliente '/clientes/{id}'
-- [x] Remover cliente '/clientes/{id}'
+- Cadastro de cliente '/clientes'
+- Consulta de cliente pelo nome '/clientes/nome/{nome}'
+- Consulta de cliente pelo id '/clientes/{id}'
+- Atualiza nome de cliente '/clientes/{id}'
+- Remover cliente '/clientes/{id}'
