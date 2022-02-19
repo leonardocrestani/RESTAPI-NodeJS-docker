@@ -8,7 +8,7 @@ module.exports = {
   // automock: false,
 
   // Stop running tests after `n` failures
-  bail: false,
+  //bail: false,
 
   // The directory where Jest should store its cached dependency information
   // cacheDirectory: "C:\\Users\\leonardo.crestani\\AppData\\Local\\Temp\\jest",
@@ -105,7 +105,7 @@ module.exports = {
   // resetMocks: false,
 
   // Reset the module registry before running each individual test
-  // resetModules: false,
+  // resetModules: true,
 
   // A path to a custom resolver
   // resolver: undefined,

@@ -26,7 +26,7 @@ class ClienteDAO {
         if(!operacao) {
             throw new Error('Nao foi possivel atualizar o nome do cliente');
         }
-        return;
+        return operacao;
     }
 
     async remove(idCliente) {
