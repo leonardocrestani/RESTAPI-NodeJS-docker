@@ -1,12 +1,20 @@
 const { Client } = require('../models');
+const NotFound = require('../errors/NotFound.js')
 
-class ClienteDAO {
+class ClientDao {
     async findByName(nome) {
-        return await Client.findOne({raw: true, attributes: {exclude: ['id', 'created_at', 'updated_at']}, where: {nome_completo: nome}});
+        const cliente = await Client.findOne({raw: true, attributes: {exclude: ['id', 'created_at', 'updated_at']}, where: {nome_completo: nome}});
+        if(!cliente) {
+            throw new NotFound('cliente');
+        }
+        return cliente;
     }
 
     async findById(idCliente) {
         const cliente = await Client.findOne({where: {id: idCliente}});
+        if(!cliente) {
+            throw new NotFound('cliente');
+        }
         return cliente;
     }
 
@@ -37,4 +45,4 @@ class ClienteDAO {
         return;
     }
 }
-module.exports = new ClienteDAO;
+module.exports = new ClientDao;
