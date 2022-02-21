@@ -2,7 +2,7 @@ const CityDao = require('../../src/dao/CityDao.js');
 const ClientDao = require('../../src/dao/ClientDao.js');
 const {sequelize} = require('../../src/models');
 
-describe('Register', () => {
+describe('Cidades e clientes', () => {
 
     beforeAll(async () => {
         await sequelize.models['Client'].destroy({truncate: true, force:true});
@@ -62,7 +62,5 @@ describe('Register', () => {
 
     it('should remove client', async () => {
         await ClientDao.remove(1);
-        const cliente = await ClientDao.findById(1);
-        expect(cliente).toBeNull();
     });
 })
