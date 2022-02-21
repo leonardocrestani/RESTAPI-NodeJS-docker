@@ -8,7 +8,7 @@ class CityController {
             return res.status(201).json(cidade);
         }
         catch(erro) {
-            return next(erro);
+            next(erro);
         }
     }
 
@@ -19,7 +19,7 @@ class CityController {
             return res.status(200).json(cidade);
         }
         catch(erro) {
-            return next(erro);
+            next(erro);
         }
     }
 
@@ -30,7 +30,7 @@ class CityController {
             return res.status(200).json(cidade);
         }
         catch(erro) {
-            return next(erro);
+            next(erro);
         }
     }
 }

@@ -8,7 +8,7 @@ class ClientController {
             return res.status(200).json(clientes);
         }
         catch(erro) {
-            return next(erro);
+            next(erro);
         }
     }
 
@@ -19,7 +19,7 @@ class ClientController {
             return res.status(200).json(cliente);
         }
         catch(erro) {
-            return next(erro);
+            next(erro);
         }
     }
 
@@ -30,7 +30,7 @@ class ClientController {
             return res.status(201).json(cliente);
         }
         catch(erro) {
-            return next(erro);
+            next(erro);
         }
     }
 
@@ -39,10 +39,10 @@ class ClientController {
         const nome = req.body.nome_completo;
         try {
             await ClientDao.update(id, nome);
-            return res.status(204).end();
+            res.status(204).end();
         }
         catch(erro) {
-            return next(erro);
+            next(erro);
         }
     }
 
@@ -53,7 +53,7 @@ class ClientController {
             return res.status(204).end();
         }
         catch(erro) {
-            return next(erro);
+            next(erro);
         }
     }
 }
