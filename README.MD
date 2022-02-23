@@ -14,7 +14,7 @@ Instalar dependências
 npm install
 ```
 
-Criar banco de dados
+Criar banco de dados <br>
 Para crição local é preciso trocar o DATABASE_HOST no arquivo .env.local para '127.0.0.1'
 ```bash
 npx sequelize db:create
