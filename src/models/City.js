@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         createdAt: 'created_at',
         updatedAt: 'updated_at'
     }
-    const City = sequelize.define("City", colunas, configuracoesTabela);
+    const City = sequelize.define("cities", colunas, configuracoesTabela);
 
     return City;
 }

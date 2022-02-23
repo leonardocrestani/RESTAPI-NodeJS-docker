@@ -5,13 +5,13 @@ const {sequelize} = require('../../src/models');
 describe('Cidades e clientes', () => {
 
     beforeAll(async () => {
-        await sequelize.models['Client'].destroy({truncate: true, force:true});
-        await sequelize.models['City'].destroy({truncate: true, force:true});
+        await sequelize.models['clients'].destroy({truncate: true, force:true});
+        await sequelize.models['cities'].destroy({truncate: true, force:true});
     });
 
     afterAll(async () => {
-        await sequelize.models['Client'].destroy({truncate: true, force:true});
-        await sequelize.models['City'].destroy({truncate: true, force:true});
+        await sequelize.models['clients'].destroy({truncate: true, force:true});
+        await sequelize.models['cities'].destroy({truncate: true, force:true});
     });
 
     it('should create a new city with name and state', async () => {
@@ -49,7 +49,6 @@ describe('Cidades e clientes', () => {
 
     it('should return client informations when the id is passed', async () => {
         const cliente = await ClientDao.findById(1);
-        console.log(cliente, "BBBBBBBBBB")
         expect(cliente.nome_completo).toBe('Leonardo');
     });
 

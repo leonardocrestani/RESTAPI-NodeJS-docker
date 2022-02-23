@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: database_cadastro
+      MYSQL_PASSWORD: admin
+    ports:
+      - '3306:3306'
+    volumes:
+      - my-db:/var/lib/mysql
+  app:
+    build: .
+    restart: always
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/usr/app
+    depends_on:
+      - db
+volumes:
+  my-db:

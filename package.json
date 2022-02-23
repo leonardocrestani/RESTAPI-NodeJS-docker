@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./src/server.js --ignore tests",
+    "start": "npx sequelize db:migrate && node ./src/server.js --ignore tests",
     "dev": "nodemon ./src/server.js --ignore tests",
     "pretest": "SET NODE_ENV=test&& sequelize db:migrate",
     "test": "SET NODE_ENV=test&& jest",
