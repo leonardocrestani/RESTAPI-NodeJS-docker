@@ -13,7 +13,7 @@ class CityDao {
     async findByName(nome) {
         const cidade = await db['cities'].findOne({where: {nome: nome}});
         if(!cidade) {
-            throw new NotFound('cidade');
+            throw new NotFound('Não foi possível encontrar a cidade informada');
         }
         return cidade;
     }
