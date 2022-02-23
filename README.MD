@@ -15,6 +15,7 @@ npm install
 ```
 
 Criar banco de dados
+Para crição local é preciso trocar o DATABASE_HOST no arquivo .env.local para '127.0.0.1'
 ```bash
 npx sequelize db:create
 ```
