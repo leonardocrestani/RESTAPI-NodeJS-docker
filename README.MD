@@ -36,12 +36,12 @@ npm test
 
 ### Cidades
 - Cadastra cidade '/cidades'
-- Consulta cidade pelo nome '/cidades?{nome}'
-- Consulta todas cidades de um estado '/cidades?{estado}'
+- Consulta cidade pelo nome '/cidades/?{nome}'
+- Consulta todas cidades de um estado '/cidades/?{estado}'
 
 ### Clientes
 - Cadastra cliente '/clientes'
-- Consulta cliente pelo nome '/clientes?{nome}'
-- Consulta cliente pelo id '/clientes?{id}'
+- Consulta cliente pelo nome '/clientes/?{nome}'
+- Consulta cliente pelo id '/clientes/?{id}'
 - Atualiza nome de cliente '/clientes/{id}'
 - Remove cliente '/clientes/{id}'

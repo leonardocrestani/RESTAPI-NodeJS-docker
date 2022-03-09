@@ -11,7 +11,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/cidades/",
+					"raw": "localhost:3000/cidades/?nome=",
 					"host": [
 						"localhost"
 					],
@@ -19,6 +19,12 @@
 					"path": [
 						"cidades",
 						""
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": ""
+						}
 					]
 				}
 			},
@@ -30,15 +36,20 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/cidades/estado/",
+					"raw": "localhost:3000/cidades/?estado",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"cidades",
-						"estado",
 						""
+					],
+					"query": [
+						{
+							"key": "estado",
+							"value": null
+						}
 					]
 				}
 			},
@@ -59,14 +70,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/cidades/",
+					"raw": "localhost:3000/cidades",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"cidades",
-						""
+						"cidades"
 					]
 				}
 			},
@@ -90,15 +100,20 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/clientes/nome/",
+					"raw": "localhost:3000/clientes/?nome=",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"clientes",
-						"nome",
 						""
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": ""
+						}
 					]
 				}
 			},
@@ -110,7 +125,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/clientes/",
+					"raw": "localhost:3000/clientes/?id=1",
 					"host": [
 						"localhost"
 					],
@@ -118,6 +133,12 @@
 					"path": [
 						"clientes",
 						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
 					]
 				}
 			},
@@ -130,7 +151,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nome_completo\": \"Leonardo\",\r\n    \"sexo\": \"M\",\r\n    \"data_nascimento\": \"05/05/2002\",\r\n    \"idade\": 19,\r\n    \"cidade_id\": 1\r\n}",
+					"raw": "{\r\n    \"nome_completo\": \"Leonardo\",\r\n    \"sexo\": \"M\",\r\n    \"data_nascimento\": \"05/05/2002\",\r\n    \"cidade\": \"Nova Prata\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -138,14 +159,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/clientes/",
+					"raw": "localhost:3000/clientes",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"clientes",
-						""
+						"clientes"
 					]
 				}
 			},

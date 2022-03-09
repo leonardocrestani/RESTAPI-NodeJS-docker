@@ -29,7 +29,7 @@ class ClientService {
     }
 
     async register(cliente) {
-        const cidade = await CityService.findByName(cliente.cidade);
+        const cidade = await CityService.find({nome: cliente.cidade});
         if(!cidade) {
             throw new NotFound('Cidade inexistente, não foi possível cadastrar o cliente');
         }

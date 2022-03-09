@@ -1,5 +1,5 @@
-const CityDao = require('../../src/dao/CityDao.js');
-const ClientDao = require('../../src/dao/ClientDao.js');
+const CityService = require('../../src/services/CityService.js');
+const ClientService = require('../../src/services/ClientService.js');
 const {sequelize} = require('../../src/models');
 
 describe('Cidades e clientes', () => {
@@ -15,51 +15,50 @@ describe('Cidades e clientes', () => {
     });
 
     it('should create a new city with name and state', async () => {
-        const cidade = await CityDao.register({id:1, nome: "Nova Prata", estado: "RS"});
+        const cidade = await CityService.register({id:1, nome: "Nova Prata", estado: "RS"});
         expect(cidade.nome).toBe('Nova Prata');
         expect(cidade.id).toBe(1);
     }, 10000);
 
     it('should return city informantions when the name is passed', async () => {
-        const cidade = await CityDao.findByName('Nova Prata');
+        const cidade = await CityService.find({nome: 'Nova Prata'});
         expect(cidade.nome).toBe('Nova Prata');
         expect(cidade.id).toBe(1);
     });
 
     it('should return all cities with the same state', async () => {
-        const cidades = await CityDao.findByState('RS');
+        const cidades = await CityService.find({estado: 'RS'});
         expect(cidades.length).toBeGreaterThan(0);
     });
 
     it('should registrate a new client', async () => {
-        await ClientDao.register({
+        await ClientService.register({
             id: 1,
             nome_completo: "Leonardo",
             sexo: "M",
             data_nascimento: "05/05/2002",
-            idade: 19,
-            cidade_id: 1
+            cidade: "Nova Prata"
         });
     }, 10000);
 
     it('should return client informations when the name is passed', async () => {
-        const cliente = await ClientDao.findByName('Leonardo');
+        const cliente = await ClientService.find({nome: 'Leonardo'});
         expect(cliente.nome_completo).toBe('Leonardo');
     });
 
     it('should return client informations when the id is passed', async () => {
-        const cliente = await ClientDao.findById(1);
+        const cliente = await ClientService.find({id: 1});
         expect(cliente.nome_completo).toBe('Leonardo');
     });
 
     it('should update client name when the new name is passed', async() => {
-        await ClientDao.update(1, "Pedro");
-        const cliente = await ClientDao.findById(1);
+        await ClientService.update(1, "Pedro");
+        const cliente = await ClientService.find({id: 1});
         expect(cliente.id).toBe(1);
-        expect(cliente.nome_completo).toBe('Pedro');
+        expect(cliente.nome_completo).toBe("Pedro");
     });
 
     it('should remove client', async () => {
-        await ClientDao.remove(1);
+        await ClientService.remove(1);
     });
 })
