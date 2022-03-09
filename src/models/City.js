@@ -1,8 +1,9 @@
+const states = require('../enums/stateEnum.js');
 
 module.exports = (sequelize, DataTypes) => {
     const colunas = {
         nome: DataTypes.STRING,
-        estado: DataTypes.CHAR(2)
+        estado: DataTypes.ENUM(states)
     }
     const configuracoesTabela = {
         createdAt: 'created_at',

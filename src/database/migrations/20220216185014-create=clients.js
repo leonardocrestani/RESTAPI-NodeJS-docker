@@ -21,11 +21,7 @@ module.exports = {
         type: Sequelize.DATEONLY,
         allowNull: false
       },
-      idade: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
-      cidade_id: {
+      cidade: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {model: 'cities', key: 'id'},

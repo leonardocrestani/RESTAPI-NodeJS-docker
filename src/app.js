@@ -3,6 +3,7 @@ require("dotenv").config({
 });
 const express = require('express');
 const NotFound = require('./errors/NotFound.js');
+const InvalidParameters = require('./errors/InvalidParameters.js');
 const app = express();
 const rotas = require('./routes/routes.js');
 
@@ -11,6 +12,9 @@ rotas(app);
 app.use((erro, req, res, next) => {
     if(erro instanceof NotFound) {
         res.status(404).json({"mensagem": erro.message});
+    }
+    if(erro instanceof InvalidParameters) {
+        res.status(422).json({"mensagem": erro.message});
     }
     else {
         res.status(400).json({"mensagem": erro.message});

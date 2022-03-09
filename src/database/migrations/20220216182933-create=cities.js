@@ -1,4 +1,5 @@
 'use strict';
+const states = require('../../enums/stateEnum.js');
 
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -14,7 +15,7 @@ module.exports = {
         allowNull: false
       },
       estado: {
-          type: Sequelize.CHAR(2),
+          type: Sequelize.ENUM(states),
           allowNull: false
       },
       created_at: {

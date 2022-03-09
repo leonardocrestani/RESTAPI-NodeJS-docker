@@ -35,13 +35,13 @@ npm test
 ## Features/endpoints
 
 ### Cidades
-- Cadastro de cidade '/cidades'
-- Consulta de cidade pelo nome '/cidades/{nome}'
-- Consulta de cidades por estado '/cidades/estado/{estado}'
+- Cadastra cidade '/cidades'
+- Consulta cidade pelo nome '/cidades?{nome}'
+- Consulta todas cidades de um estado '/cidades?{estado}'
 
 ### Clientes
-- Cadastro de cliente '/clientes'
-- Consulta de cliente pelo nome '/clientes/nome/{nome}'
-- Consulta de cliente pelo id '/clientes/{id}'
+- Cadastra cliente '/clientes'
+- Consulta cliente pelo nome '/clientes?{nome}'
+- Consulta cliente pelo id '/clientes?{id}'
 - Atualiza nome de cliente '/clientes/{id}'
-- Remover cliente '/clientes/{id}'
+- Remove cliente '/clientes/{id}'

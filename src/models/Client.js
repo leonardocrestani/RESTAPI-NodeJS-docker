@@ -4,8 +4,7 @@ module.exports = (sequelize, DataTypes) => {
         nome_completo: DataTypes.STRING,
         sexo: DataTypes.ENUM('M', 'F'),
         data_nascimento: DataTypes.DATEONLY,
-        idade: DataTypes.INTEGER,
-        cidade_id: DataTypes.INTEGER
+        cidade: DataTypes.INTEGER
     }
     const configuracoesTabela = {
         createdAt: 'created_at',
