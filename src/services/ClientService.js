@@ -2,6 +2,7 @@ const ClientDao = require('../dao/ClientDao.js');
 const NotFound = require('../errors/NotFound.js');
 const InvalidParameters = require('../errors/InvalidParameters.js');
 const CityService = require('./CityService.js');
+const calculateAge = require('../utils/calculateAge.js');
 
 class ClientService {
     async find(param) {
@@ -11,7 +12,7 @@ class ClientService {
                 throw new NotFound('Não foi possível encontrar o cliente informado');
             }
             let data = client.data_nascimento.split('-');
-            client.idade = this._calculaIdade(...data);
+            client.idade = calculateAge(...data);
             return client;
         }
         if(Object.keys(param)[0] === 'id' && Object.keys(param).length === 1) {
@@ -20,7 +21,7 @@ class ClientService {
                 throw new NotFound('Não foi possível encontrar o cliente informado');
             }
             let data = client.data_nascimento.split('-');
-            client.idade = this._calculaIdade(...data);
+            client.idade = calculateAge(...data);
             return client;
         }
         else {
@@ -61,18 +62,6 @@ class ClientService {
             throw new Error('Não foi possível remover cliente');
         }
         return operacao;
-    }
-
-    _calculaIdade(ano, mes, dia) {
-        const dataAtual = new Date();
-        const diaAtual = dataAtual.getDate();
-        const mesAtual = dataAtual.getMonth() + 1;
-        const anoAtual = dataAtual.getFullYear();
-        let idade = anoAtual - ano;
-        if(mes > mesAtual || dia > diaAtual) {
-            idade = idade - 1
-        }
-        return idade;
     }
 }
 
