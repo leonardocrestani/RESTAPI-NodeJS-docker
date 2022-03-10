@@ -8,11 +8,9 @@ module.exports = async (req, res, next) => {
       data_nascimento: Joi.date().required(),
       cidade: Joi.string().required()
     });
-    const {error} = await schema.validate(req.body, { abortEarly: false });
-    if(error instanceof Error) {
-      throw new Error('Dados insuficientes na requisicao');
-    }
-    next();
+    const { error } = await schema.validate(req.body, { abortEarly: true });
+    if (error) throw error
+    return next();
   } 
   catch(erro) {
     return res.status(400).json({

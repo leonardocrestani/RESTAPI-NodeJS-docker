@@ -7,7 +7,5 @@ router.get('/clientes/', ClientController.find);
 router.post('/clientes', registerValidation, ClientController.register);
 router.patch('/clientes/:id', updateValidation, ClientController.update);
 router.delete('/clientes/:id', ClientController.remove);
-//router.get('/clientes/:nome', ClientController.findByName);
-//router.get('/clientes/:id', ClientController.findById);
 
 module.exports = router;

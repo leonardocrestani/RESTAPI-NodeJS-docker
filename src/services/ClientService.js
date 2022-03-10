@@ -1,32 +1,27 @@
 const ClientDao = require('../dao/ClientDao.js');
 const NotFound = require('../errors/NotFound.js');
-const InvalidParameters = require('../errors/InvalidParameters.js');
+const UnprocessableEntity = require('../errors/UnprocessableEntity.js');
 const CityService = require('./CityService.js');
 const calculateAge = require('../utils/calculateAge.js');
 
 class ClientService {
     async find(param) {
-        if(Object.keys(param)[0] === 'nome' && Object.keys(param).length === 1) {
-            const client = await ClientDao.findByName(param.nome);
-            if(!client) {
-                throw new NotFound('Não foi possível encontrar o cliente informado');
-            }
-            let data = client.data_nascimento.split('-');
-            client.idade = calculateAge(...data);
-            return client;
+        let client;
+        if(param.id) {
+            client = await ClientDao.findById(param.id);
         }
-        if(Object.keys(param)[0] === 'id' && Object.keys(param).length === 1) {
-            const client = await ClientDao.findById(param.id);
-            if(!client) {
-                throw new NotFound('Não foi possível encontrar o cliente informado');
-            }
-            let data = client.data_nascimento.split('-');
-            client.idade = calculateAge(...data);
-            return client;
+        else if(param.nome) {
+            client = await ClientDao.findByName(param.nome);
         }
         else {
-            throw new InvalidParameters('Parametros invalidos');
+            throw new UnprocessableEntity('Parametros invalidos');
         }
+        if(!client) {
+            throw new NotFound('Não foi possível encontrar o cliente informado');
+        }
+        let data = client.data_nascimento.split('-');
+        client.idade = calculateAge(...data);
+        return client;
     }
 
     async register(cliente) {
@@ -57,7 +52,6 @@ class ClientService {
 
     async remove(idCliente) {
         const operacao = await ClientDao.remove(idCliente);
-        console.log(operacao)
         if(!operacao) {
             throw new Error('Não foi possível remover cliente');
         }

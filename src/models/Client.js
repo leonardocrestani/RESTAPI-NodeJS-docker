@@ -1,8 +1,9 @@
+const genders = require('../enums/genderEnum.js');
 
 module.exports = (sequelize, DataTypes) => {
     const colunas = {
         nome_completo: DataTypes.STRING,
-        sexo: DataTypes.ENUM('M', 'F'),
+        sexo: DataTypes.ENUM(genders),
         data_nascimento: DataTypes.DATEONLY,
         cidade: DataTypes.INTEGER
     }

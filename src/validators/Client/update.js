@@ -5,11 +5,9 @@ module.exports = async (req, res, next) => {
     const schema = Joi.object({
       nome_completo: Joi.string().required()
     });
-    const {error} = await schema.validate(req.body, { abortEarl: true });
-    if(error instanceof Error) {
-      throw new Error('Dados insuficientes na requisicao');
-    }
-    next();
+    const { error } = await schema.validate(req.body, { abortEarly: true });
+    if (error) throw error
+    return next();
   } 
   catch(erro) {
     return res.status(400).json({

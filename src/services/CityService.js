@@ -1,6 +1,6 @@
 const CityDao = require('../dao/CityDao.js');
 const NotFound = require('../errors/NotFound.js');
-const InvalidParameters = require('../errors/InvalidParameters.js');
+const UnprocessableEntity = require('../errors/UnprocessableEntity.js');
 const states = require('../enums/stateEnum.js');
 
 class CityService {
@@ -21,7 +21,7 @@ class CityService {
             return cidades;
         }
         else {
-            throw new InvalidParameters('Parametros invalidos');
+            throw new UnprocessableEntity('Parametros invalidos');
         }
     }
 

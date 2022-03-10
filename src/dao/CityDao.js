@@ -6,11 +6,11 @@ class CityDao {
     }
 
     async findByName(nome) {
-        return await db['cities'].findOne({where: {nome: nome}});
+        return await db['cities'].findOne({where: {nome}});
     }
 
     async findByState(estado) {
-        return await db['cities'].findAll({attributes: {exclude: ['id', 'created_at', 'updated_at', 'estado']}, where: {estado: estado}});
+        return await db['cities'].findAll({attributes: {exclude: ['id', 'created_at', 'updated_at', 'estado']}, where: {estado}});
     }
 }
 
