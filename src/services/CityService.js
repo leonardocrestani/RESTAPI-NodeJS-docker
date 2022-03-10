@@ -37,23 +37,6 @@ class CityService {
         const result = await CityDao.register(dados);
         return result;
     }
-
-    /*async findByName(nome) {
-        const cidade = await CityDao.findByName(nome);
-        if(!cidade) {
-            throw new NotFound('Não foi possível encontrar a cidade informada');
-        }
-        return cidade;
-    }
-
-    async findByState(estado) {
-        const existe = states.some((state) => state === estado);
-        if(!existe) {
-            throw new Error ('Estado informado não existe');
-        }
-        const cidades = await CityDao.findByState(estado);
-        return cidades;
-    }*/
 }
 
 module.exports = new CityService();

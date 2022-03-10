@@ -46,10 +46,11 @@ class ClientService {
     }
 
     async update(idCliente, valor) {
-        const operacao = await ClientDao.update(idCliente, valor);
-        if(!operacao) {
-            throw new Error('Não foi possível atualizar o nome do cliente');
+        const client = await ClientDao.findById(idCliente);
+        if(!client) {
+            throw new NotFound('Não foi possível encontrar o cliente informado');
         }
+        const operacao = await ClientDao.update(idCliente, valor);
         return operacao;
     }
 
@@ -72,26 +73,6 @@ class ClientService {
         }
         return idade;
     }
-
-    /*async findByName(nome) {
-        const client = await ClientDao.findByName(nome);
-        if(!client) {
-            throw new NotFound('Não foi possível encontrar o cliente informado');
-        }
-        let data = client.data_nascimento.split('-');
-        client.idade = this._calculaIdade(...data);
-        return client;
-    }
-
-    async findById(id) {
-        const client = await ClientDao.findById(id);
-        if(!client) {
-            throw new NotFound('Não foi possível encontrar o cliente informado');
-        }
-        let data = client.data_nascimento.split('-');
-        client.idade = this._calculaIdade(...data);
-        return client;
-    }*/
 }
 
 module.exports = new ClientService();

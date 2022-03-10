@@ -10,11 +10,8 @@ const rotas = require('./routes/routes.js');
 rotas(app);
 
 app.use((erro, req, res, next) => {
-    if(erro instanceof NotFound) {
-        res.status(404).json({"mensagem": erro.message});
-    }
-    if(erro instanceof InvalidParameters) {
-        res.status(422).json({"mensagem": erro.message});
+    if(erro instanceof NotFound || erro instanceof InvalidParameters) {
+        res.status(erro.status).json({"mensagem": erro.message});
     }
     else {
         res.status(400).json({"mensagem": erro.message});
