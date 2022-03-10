@@ -56,10 +56,11 @@ class ClientService {
 
     async remove(idCliente) {
         const operacao = await ClientDao.remove(idCliente);
+        console.log(operacao)
         if(!operacao) {
             throw new Error('Não foi possível remover cliente');
         }
-        return;
+        return operacao;
     }
 
     _calculaIdade(ano, mes, dia) {

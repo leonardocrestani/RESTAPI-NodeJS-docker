@@ -32,13 +32,15 @@ describe('Cidades e clientes', () => {
     });
 
     it('should registrate a new client', async () => {
-        await ClientService.register({
+        const cliente = await ClientService.register({
             id: 1,
             nome_completo: "Leonardo",
             sexo: "M",
             data_nascimento: "05/05/2002",
             cidade: "Nova Prata"
         });
+        expect(cliente.nome_completo).toBe('Leonardo');
+        expect(cliente.id).toBe(1);
     }, 10000);
 
     it('should return client informations when the name is passed', async () => {
@@ -59,6 +61,7 @@ describe('Cidades e clientes', () => {
     });
 
     it('should remove client', async () => {
-        await ClientService.remove(1);
+        const operacao = await ClientService.remove(1);
+        expect(operacao).toBe(1);
     });
 })
