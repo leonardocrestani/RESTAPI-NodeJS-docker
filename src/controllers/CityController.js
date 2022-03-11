@@ -22,28 +22,6 @@ class CityController {
             next(erro);
         }
     }
-
-    /*static async findByName(req, res, next) {
-        const nome = req.params.nome;
-        try {
-            const cidade = await CityService.findByName(nome);
-            return res.status(200).json(cidade);
-        }
-        catch(erro) {
-            next(erro);
-        }
-    }
-
-    static async findByState(req, res, next) {
-        const estado = req.params.estado;
-        try {
-            const cidade = await CityService.findByState(estado);
-            return res.status(200).json(cidade);
-        }
-        catch(erro) {
-            next(erro);
-        }
-    }*/
 }
 
 module.exports = CityController;

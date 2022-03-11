@@ -5,20 +5,18 @@ const states = require('../enums/stateEnum.js');
 
 class CityService {
     async find(param) {
-        if(Object.keys(param)[0] === 'nome' && Object.keys(param).length === 1) {
-            const cidade = await CityDao.findByName(param.nome);
-            if(!cidade) {
-                throw new NotFound('Não foi possível encontrar a cidade informada');
+        let cidade;
+        if(Object.keys(param).length === 1) {
+            if(param.estado) {
+                return await CityDao.findByState(param);
             }
-            return cidade;
-        }
-        if(Object.keys(param)[0] === 'estado' && Object.keys(param).length === 1) {
-            const existe = states.some((state) => state === param.estado);
-            if(!existe) {
-                throw new Error ('Estado informado não existe');
+            else {
+                cidade = await CityDao.find(param);
+                if(!cidade) {
+                    throw new NotFound('Não foi possível encontrar a cidade informada');
+                }
+                return cidade;
             }
-            const cidades = await CityDao.findByState(param.estado);
-            return cidades;
         }
         else {
             throw new UnprocessableEntity('Parametros invalidos');
