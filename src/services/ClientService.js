@@ -1,20 +1,18 @@
 const ClientDao = require('../dao/ClientDao.js');
+const CityService = require('./CityService.js');
 const NotFound = require('../errors/NotFound.js');
 const UnprocessableEntity = require('../errors/UnprocessableEntity.js');
-const CityService = require('./CityService.js');
 const calculateAge = require('../utils/calculateAge.js');
+const formatDate = require('../utils/formatDate.js');
 
 class ClientService {
     async find(param) {
         let client;
-        if(param.id) {
-            client = await ClientDao.findById(param.id);
-        }
-        else if(param.nome) {
-            client = await ClientDao.findByName(param.nome);
+        if(Object.keys(param).length === 1) {
+            client = await ClientDao.find(param);
         }
         else {
-            throw new UnprocessableEntity('Parametros invalidos');
+            throw new UnprocessableEntity('Parametros invalidos passar id ou nome');
         }
         if(!client) {
             throw new NotFound('Não foi possível encontrar o cliente informado');
@@ -34,9 +32,7 @@ class ClientService {
         if(existeCliente) {
             throw new Error('Cliente ja existente');
         }
-        let data = cliente.data_nascimento.split('/');
-        data = `${data[2]}-${data[1]}-${data[0]}`;
-        cliente.data_nascimento = data;
+        cliente.data_nascimento = formatDate(cliente.data_nascimento);
         const register = await ClientDao.register(cliente);
         return register;
     }

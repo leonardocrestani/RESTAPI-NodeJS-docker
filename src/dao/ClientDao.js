@@ -1,12 +1,8 @@
 const db = require('../models');
 
 class ClientDao {
-    async findByName(nome) {
-        return await db['clients'].findOne({raw: true, attributes: {exclude: ['id', 'created_at', 'updated_at']}, where: {nome_completo: nome}});
-    }
-
-    async findById(id) {
-        return await db['clients'].findOne({raw: true, where: {id}});
+    async find(param) {
+        return await db['clients'].findOne({raw: true, where: param});
     }
 
     async register(cliente) {

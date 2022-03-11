@@ -111,7 +111,7 @@
 					],
 					"query": [
 						{
-							"key": "nome",
+							"key": "nome_completo",
 							"value": ""
 						}
 					]
