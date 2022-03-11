@@ -8,6 +8,10 @@ class CityService {
         let cidade;
         if(Object.keys(param).length === 1) {
             if(param.estado) {
+                const existe = states.some((state) => state === param.estado);
+                if(!existe) {
+                    throw new Error ('Estado informado não existe');
+                }
                 return await CityDao.findByState(param);
             }
             else {
