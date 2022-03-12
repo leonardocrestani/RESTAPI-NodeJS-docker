@@ -28,7 +28,7 @@ class ClientService {
             throw new NotFound('Cidade inexistente, não foi possível cadastrar o cliente');
         }
         cliente.cidade = cidade.id
-        const existeCliente = await ClientDao.findByName(cliente.nome_completo);
+        const existeCliente = await ClientDao.find({nome_completo: cliente.nome_completo});
         if(existeCliente) {
             throw new Error('Cliente ja existente');
         }
@@ -38,7 +38,7 @@ class ClientService {
     }
 
     async update(idCliente, valor) {
-        const client = await ClientDao.findById(idCliente);
+        const client = await ClientDao.find({id: idCliente});
         if(!client) {
             throw new NotFound('Não foi possível encontrar o cliente informado');
         }

@@ -11,10 +11,10 @@ rotas(app);
 
 app.use((erro, req, res, next) => {
     if(erro instanceof NotFound || erro instanceof UnprocessableEntity) {
-        res.status(erro.status).json({"mensagem": erro.message});
+        res.status(erro.status).json({"message": erro.message});
     }
     else {
-        res.status(400).json({"mensagem": erro.message});
+        res.status(400).json({"message": erro.message});
     }
 });
 

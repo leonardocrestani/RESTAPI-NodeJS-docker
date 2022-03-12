@@ -10,7 +10,7 @@ class CityService {
             if(param.estado) {
                 const existe = states.some((state) => state === param.estado);
                 if(!existe) {
-                    throw new Error ('Estado informado não existe');
+                    throw new NotFound('Estado informado não existe');
                 }
                 return await CityDao.findByState(param);
             }
@@ -30,9 +30,9 @@ class CityService {
     async register(dados) {
         const existe = states.some((state) => state === dados.estado);
         if(!existe) {
-            throw new Error('Estado informado nao existe')
+            throw new NotFound('Estado informado nao existe')
         } 
-        const cidade = await CityDao.findByName(dados.nome);
+        const cidade = await CityDao.find({nome: dados.nome});
         if(cidade) {
             throw new NotFound('Cidade ja cadastrada');
         }

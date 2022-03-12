@@ -27,6 +27,7 @@ npm run start
 > A API estará disponível na URL http://localhost:3000
 
 ## Executar testes
+Para execução dos testes é preciso que a API já esteja funcionando para que os endpoints a serem testados estejam acessíveis
 ```bash
 npm test
 ```

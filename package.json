@@ -6,9 +6,8 @@
   "scripts": {
     "start": "npx sequelize db:migrate && node ./src/server.js --ignore tests",
     "dev": "nodemon ./src/server.js --ignore tests",
-    "pretest": "SET NODE_ENV=test&& sequelize db:migrate",
-    "test": "SET NODE_ENV=test&& jest",
-    "posttest": "SET NODE_ENV=test&& sequelize db:migrate:undo:all"
+    "pretest": "SET NODE_ENV=test&& sequelize db:migrate:undo:all&& sequelize db:migrate",
+    "test": "SET NODE_ENV=test&& jest"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +24,7 @@
     "jest": "^27.5.1",
     "nodemon": "^2.0.15",
     "sequelize-cli": "^6.4.1",
-    "sqlite3": "^5.0.2"
+    "sqlite3": "^5.0.2",
+    "supertest": "^6.2.2"
   }
 }
