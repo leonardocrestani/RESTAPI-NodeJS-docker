@@ -1,45 +1,43 @@
-'use strict';
-
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     return queryInterface.createTable('clients', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        allowNull: false 
+        allowNull: false,
       },
       nome_completo: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       sexo: {
         type: Sequelize.ENUM('M', 'F'),
-        allowNull: false
+        allowNull: false,
       },
       data_nascimento: {
         type: Sequelize.DATEONLY,
-        allowNull: false
+        allowNull: false,
       },
       cidade: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {model: 'cities', key: 'id'},
+        references: { model: 'cities', key: 'id' },
         onUpdate: 'CASCADE',
-        onDelete: 'RESTRICT'
+        onDelete: 'RESTRICT',
       },
       created_at: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: false,
       },
       updated_at: {
         type: Sequelize.DATE,
-        allowNull: false
-      }
+        allowNull: false,
+      },
     });
   },
 
-  async down (queryInterface, Sequelize) {
-    return queryInterface.dropTable('clients')
-  }
+  async down(queryInterface, Sequelize) {
+    return queryInterface.dropTable('clients');
+  },
 };

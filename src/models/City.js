@@ -1,15 +1,15 @@
-const states = require('../enums/stateEnum.js');
+const states = require('../enums/stateEnum');
 
 module.exports = (sequelize, DataTypes) => {
-    const colunas = {
-        nome: DataTypes.STRING,
-        estado: DataTypes.ENUM(states)
-    }
-    const configuracoesTabela = {
-        createdAt: 'created_at',
-        updatedAt: 'updated_at'
-    }
-    const City = sequelize.define("cities", colunas, configuracoesTabela);
+  const colunas = {
+    nome: DataTypes.STRING,
+    estado: DataTypes.ENUM(states),
+  };
+  const configuracoesTabela = {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
+  };
+  const City = sequelize.define('cities', colunas, configuracoesTabela);
 
-    return City;
-}
+  return City;
+};

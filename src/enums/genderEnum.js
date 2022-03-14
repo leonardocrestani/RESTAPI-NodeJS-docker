@@ -1,6 +1,6 @@
 const gender = [
-    "M",
-    "F"
-]
+  'M',
+  'F',
+];
 
 module.exports = gender;

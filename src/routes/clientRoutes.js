@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const ClientController = require('../controllers/ClientController.js');
-const registerValidation = require('../validators/Client/register.js');
-const updateValidation = require('../validators/Client/update.js');
+const ClientController = require('../controllers/ClientController');
+const registerValidation = require('../validators/Client/register');
+const updateValidation = require('../validators/Client/update');
 
 router.get('/clientes', ClientController.find);
 router.post('/clientes', registerValidation, ClientController.register);
