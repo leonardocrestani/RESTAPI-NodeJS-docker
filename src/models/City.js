@@ -1,15 +1,12 @@
 const states = require('../enums/stateEnum');
+const tableConfig = require('../config/tableConfig');
 
 module.exports = (sequelize, DataTypes) => {
-  const colunas = {
-    nome: DataTypes.STRING,
-    estado: DataTypes.ENUM(states),
+  const columns = {
+    name: DataTypes.STRING,
+    state: DataTypes.ENUM(states),
   };
-  const configuracoesTabela = {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at',
-  };
-  const City = sequelize.define('cities', colunas, configuracoesTabela);
+  const City = sequelize.define('cities', columns, tableConfig);
 
   return City;
 };

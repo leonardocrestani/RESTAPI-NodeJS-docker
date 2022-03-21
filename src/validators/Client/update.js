@@ -1,9 +1,10 @@
 const Joi = require('joi');
+const pattern = /^(?!\s*$).+/
 
 module.exports = async (req, res, next) => {  
   try {
     const schema = Joi.object({
-      nome_completo: Joi.string().required()
+      full_name: Joi.string().pattern(pattern).min(4).required()
     });
     const { error } = await schema.validate(req.body, { abortEarly: true });
     if (error) throw error

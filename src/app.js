@@ -6,9 +6,9 @@ const NotFound = require('./errors/NotFound');
 const UnprocessableEntity = require('./errors/UnprocessableEntity');
 
 const app = express();
-const rotas = require('./routes/routes');
+const routes = require('./routes/routes');
 
-rotas(app);
+routes(app);
 
 app.use((erro, req, res, next) => {
   if (erro instanceof NotFound || erro instanceof UnprocessableEntity) {

@@ -7,19 +7,19 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
-      nome_completo: {
+      full_name: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      sexo: {
+      gender: {
         type: Sequelize.ENUM('M', 'F'),
         allowNull: false,
       },
-      data_nascimento: {
+      birth_date: {
         type: Sequelize.DATEONLY,
         allowNull: false,
       },
-      cidade: {
+      city: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { model: 'cities', key: 'id' },

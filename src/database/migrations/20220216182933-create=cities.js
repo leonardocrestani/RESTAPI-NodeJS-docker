@@ -9,11 +9,11 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
-      nome: {
+      name: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      estado: {
+      state: {
         type: Sequelize.ENUM(states),
         allowNull: false,
       },

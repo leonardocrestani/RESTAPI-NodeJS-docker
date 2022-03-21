@@ -4,8 +4,8 @@ class CityController {
   static async find(req, res, next) {
     const params = req.query;
     try {
-      const cidade = await CityService.find(params);
-      return res.status(200).json(cidade);
+      const city = await CityService.find(params);
+      return res.status(200).json(city);
     } catch (erro) {
       next(erro);
     }
@@ -14,8 +14,8 @@ class CityController {
   static async register(req, res, next) {
     const dados = req.body;
     try {
-      const cidade = await CityService.register(dados);
-      return res.status(201).json(cidade);
+      const city = await CityService.register(dados);
+      return res.status(201).json(city);
     } catch (erro) {
       next(erro);
     }

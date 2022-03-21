@@ -11,46 +11,42 @@ class ClientService {
     if (Object.keys(param).length === 1) {
       client = await ClientDao.find(param);
     } else {
-      throw new UnprocessableEntity('Parametros invalidos passar id ou nome');
+      throw new UnprocessableEntity('Invalid parameters pass id or name');
     }
     if (!client) {
-      throw new NotFound('Não foi possível encontrar o cliente informado');
+      throw new NotFound('Informed client not found');
     }
-    const data = client.data_nascimento.split('-');
-    client.idade = calculateAge(...data);
+    const date = client.birth_date.split('-');
+    client.age = calculateAge(...date);
     return client;
   }
 
-  async register(cliente) {
-    const cidade = await CityService.find({ nome: cliente.cidade });
-    if (!cidade) {
-      throw new NotFound('Cidade inexistente, não foi possível cadastrar o cliente');
+  async register(client) {
+    const city = await CityService.find({ name: client.city });
+    client.city = city.id;
+    const existCustomer = await ClientDao.find({ full_name: client.full_name });
+    if (existCustomer) {
+      throw new Error('Client already exists');
     }
-    cliente.cidade = cidade.id;
-    const existeCliente = await ClientDao.find({ nome_completo: cliente.nome_completo });
-    if (existeCliente) {
-      throw new Error('Cliente ja existente');
-    }
-    cliente.data_nascimento = formatDate(cliente.data_nascimento);
-    const register = await ClientDao.register(cliente);
+    client.birth_date = formatDate(client.birth_date);
+    const register = await ClientDao.register(client);
     return register;
   }
 
-  async update(idCliente, valor) {
-    const client = await ClientDao.find({ id: idCliente });
-    if (!client) {
-      throw new NotFound('Não foi possível encontrar o cliente informado');
+  async update(clientId, value) {
+    const [operation] = await ClientDao.update(clientId, value);
+    if (!operation) {
+      throw new Error('Could not update client');
     }
-    const operacao = await ClientDao.update(idCliente, valor);
-    return operacao;
+    return;
   }
 
-  async remove(idCliente) {
-    const operacao = await ClientDao.remove(idCliente);
-    if (!operacao) {
-      throw new Error('Não foi possível remover cliente');
+  async remove(clientId) {
+    const operation = await ClientDao.remove(clientId);
+    if (!operation) {
+      throw new Error('Could not remove client');
     }
-    return operacao;
+    return;
   }
 }
 

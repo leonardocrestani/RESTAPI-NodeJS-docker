@@ -10,11 +10,11 @@ class ClientDao {
   }
 
   async update(id, nome) {
-    return await db.clients.update({ nome_completo: nome }, { where: { id } });
+    return await db.clients.update({ full_name: nome }, { raw:true, where: id });
   }
 
   async remove(id) {
-    return await db.clients.destroy({ where: { id } });
+    return await db.clients.destroy({ where: id });
   }
 }
 module.exports = new ClientDao();
