@@ -9,6 +9,7 @@ const configDatabase = {
   host: process.env.DATABASE_HOST,
   dialect: process.env.DATABASE_DIALECT || 'mysql',
   storage: './tests/database.sqlite',
+  logging: false
 };
 
 module.exports = configDatabase;
