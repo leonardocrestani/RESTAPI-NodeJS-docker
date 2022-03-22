@@ -3,6 +3,7 @@ O projeto consiste na criação de uma API REST que possibilita a criação de c
 
 ## Instalação com docker
 Criação do container
+Para crição do banco no docker é preciso trocar o DATABASE_HOST no arquivo .env.local para 'db'
 ```bash
 docker-compose up --build
 ```
@@ -36,13 +37,13 @@ npm test
 ## Features/endpoints
 
 ### Cidades
-- Cadastra cidade '/cidades'
-- Consulta cidade pelo nome '/cidades?{nome}'
-- Consulta todas cidades de um estado '/cidades?{estado}'
+- Cadastra cidade '/city'
+- Consulta cidade pelo nome '/city?name='
+- Consulta todas cidades de um estado '/city?state='
 
 ### Clientes
-- Cadastra cliente '/clientes'
-- Consulta cliente pelo nome '/clientes?{nome_completo}'
-- Consulta cliente pelo id '/clientes?{id}'
-- Atualiza nome de cliente '/clientes/{id}'
-- Remove cliente '/clientes/{id}'
+- Cadastra cliente '/client'
+- Consulta cliente pelo nome '/client?full_name='
+- Consulta cliente pelo id '/client?id='
+- Atualiza nome de cliente '/client/{id}'
+- Remove cliente '/client/{id}'

@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const state = require('../../enums/stateEnum');
 const pattern = /^(?!\s*$).+/
 
 module.exports = async (req, res, next) => {  
@@ -6,7 +7,7 @@ module.exports = async (req, res, next) => {
     const schema = Joi.object({
       id: Joi.number(),
       name: Joi.string().pattern(pattern).min(3).required(),
-      state: Joi.string().pattern(pattern).max(2).min(2).required()
+      state: Joi.string().valid(...state).required()
     });
     const { error } = await schema.validate(req.body, { abortEarly: true });
     if (error) throw error

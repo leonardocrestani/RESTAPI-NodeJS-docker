@@ -6,23 +6,22 @@
 	},
 	"item": [
 		{
-			"name": "GET Cidade nome",
+			"name": "GET City by name",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/cidades/?nome=",
+					"raw": "localhost:3000/city?name=",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"cidades",
-						""
+						"city"
 					],
 					"query": [
 						{
-							"key": "nome",
+							"key": "name",
 							"value": ""
 						}
 					]
@@ -31,24 +30,23 @@
 			"response": []
 		},
 		{
-			"name": "GET Cidades estado",
+			"name": "GET Cities by state",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/cidades/?estado",
+					"raw": "localhost:3000/city?state=RS",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"cidades",
-						""
+						"city"
 					],
 					"query": [
 						{
-							"key": "estado",
-							"value": null
+							"key": "state",
+							"value": "RS"
 						}
 					]
 				}
@@ -56,13 +54,13 @@
 			"response": []
 		},
 		{
-			"name": "POST Cidade",
+			"name": "POST City",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nome\": \"Nova Prata\",\r\n    \"estado\": \"RS\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Nova Prata\",\r\n    \"state\": \"RS\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -70,48 +68,35 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/cidades",
+					"raw": "localhost:3000/city",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"cidades"
+						"city"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "GET Cliente nome",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+			"name": "GET Client by name",
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nome_completo\": \"Pedro\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "localhost:3000/clientes/?nome=",
+					"raw": "localhost:3000/client?full_name=",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"clientes",
-						""
+						"client"
 					],
 					"query": [
 						{
-							"key": "nome_completo",
+							"key": "full_name",
 							"value": ""
 						}
 					]
@@ -120,24 +105,23 @@
 			"response": []
 		},
 		{
-			"name": "GET Cliente Id",
+			"name": "GET Client by id",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/clientes/?id=1",
+					"raw": "localhost:3000/client?id=",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"clientes",
-						""
+						"client"
 					],
 					"query": [
 						{
 							"key": "id",
-							"value": "1"
+							"value": ""
 						}
 					]
 				}
@@ -151,7 +135,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nome_completo\": \"Leonardo\",\r\n    \"sexo\": \"M\",\r\n    \"data_nascimento\": \"05/05/2002\",\r\n    \"cidade\": \"Nova Prata\"\r\n}",
+					"raw": "{\r\n    \"full_name\": \"Leonardo\",\r\n    \"gender\": \"M\",\r\n    \"birth_date\": \"05/05/2002\",\r\n    \"city\": \"Nova Prata\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -159,26 +143,26 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/clientes",
+					"raw": "localhost:3000/client",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"clientes"
+						"client"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "PATCH Cliente nome",
+			"name": "PATCH Client by name",
 			"request": {
 				"method": "PATCH",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nome_completo\": \"Pedro\"\r\n}",
+					"raw": "{\r\n    \"full_name\": \"Diogo\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -186,33 +170,33 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/clientes/",
+					"raw": "localhost:3000/client/1",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"clientes",
-						""
+						"client",
+						"1"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "DELETE Cliente",
+			"name": "DELETE Client by name",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/clientes/",
+					"raw": "localhost:3000/client/1",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"clientes",
-						""
+						"client",
+						"1"
 					]
 				}
 			},

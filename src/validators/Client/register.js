@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const gender = require('../../enums/genderEnum');
 const pattern = /^(?!\s*$).+/
 
 module.exports = async (req, res, next) => {  
@@ -6,7 +7,7 @@ module.exports = async (req, res, next) => {
     const schema = Joi.object({
       id: Joi.number(),
       full_name: Joi.string().pattern(pattern).min(4).required(),
-      gender: Joi.string().pattern(pattern).min(1).max(1).required(),
+      gender: Joi.string().valid(...gender).required(),
       birth_date: Joi.date().required(),
       city: Joi.string().pattern(pattern).min(3).required()
     });
