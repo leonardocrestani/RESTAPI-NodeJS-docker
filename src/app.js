@@ -2,20 +2,15 @@ require('dotenv').config({
   path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env.local',
 });
 const express = require('express');
-const NotFound = require('./errors/NotFound');
-const UnprocessableEntity = require('./errors/UnprocessableEntity');
 
 const app = express();
 const routes = require('./routes/routes');
+const errorsMiddleware = require('./middlewares/errorsMiddleware');
+const accessControlMiddleware = require('./middlewares/accessControlMiddleware');
 
+
+app.use(accessControlMiddleware);
 routes(app);
-
-app.use((erro, req, res, next) => {
-  if (erro instanceof NotFound || erro instanceof UnprocessableEntity) {
-    res.status(erro.status).json({ message: erro.message });
-  } else {
-    res.status(400).json({ message: erro.message });
-  }
-});
+app.use(errorsMiddleware);
 
 module.exports = app;

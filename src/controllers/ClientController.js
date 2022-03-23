@@ -26,7 +26,7 @@ class ClientController {
     const name = req.body.full_name;
     try {
       await ClientService.update(id, name);
-      res.status(204).end();
+      res.status(200).end();
     } catch (erro) {
       next(erro);
     }
