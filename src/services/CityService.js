@@ -1,6 +1,5 @@
 const CityDao = require('../dao/CityDao');
 const NotFound = require('../errors/NotFound');
-const states = require('../enums/stateEnum');
 
 class CityService {
   async find(param) {
