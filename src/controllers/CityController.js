@@ -1,7 +1,7 @@
 const CityService = require('../services/CityService');
 
 class CityController {
-  static async find(req, res, next) {
+  async find(req, res, next) {
     const params = req.query;
     try {
       const city = await CityService.find(params);
@@ -11,7 +11,7 @@ class CityController {
     }
   }
 
-  static async register(req, res, next) {
+  async register(req, res, next) {
     const dados = req.body;
     try {
       const city = await CityService.register(dados);
@@ -22,4 +22,4 @@ class CityController {
   }
 }
 
-module.exports = CityController;
+module.exports = new CityController();

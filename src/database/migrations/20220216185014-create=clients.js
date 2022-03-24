@@ -1,3 +1,5 @@
+const genders = require('../../enums/genderEnum');
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     return queryInterface.createTable('clients', {
@@ -12,7 +14,7 @@ module.exports = {
         allowNull: false,
       },
       gender: {
-        type: Sequelize.ENUM('M', 'F'),
+        type: Sequelize.ENUM(genders),
         allowNull: false,
       },
       birth_date: {

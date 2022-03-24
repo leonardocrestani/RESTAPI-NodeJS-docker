@@ -7,12 +7,7 @@ const formatDate = require('../utils/formatDate');
 
 class ClientService {
   async find(param) {
-    let client;
-    if (Object.keys(param).length === 1) {
-      client = await ClientDao.find(param);
-    } else {
-      throw new UnprocessableEntity('Invalid parameters pass id or name');
-    }
+    const client = await ClientDao.find(param);
     if (!client) {
       throw new NotFound('Informed client not found');
     }
@@ -35,16 +30,19 @@ class ClientService {
 
   async update(clientId, value) {
     const [operation] = await ClientDao.update(clientId, value);
-    if (!operation) {
-      throw new Error('Could not update client');
+    if (operation) {
+      const client = await ClientDao.find(clientId);
+      return client;
     }
-    return;
+    else {
+      throw new UnprocessableEntity('Could not update client');
+    }
   }
 
   async remove(clientId) {
     const operation = await ClientDao.remove(clientId);
     if (!operation) {
-      throw new Error('Could not remove client');
+      throw new UnprocessableEntity('Could not remove client');
     }
     return;
   }
