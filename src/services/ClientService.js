@@ -34,9 +34,7 @@ class ClientService {
       const client = await ClientDao.find(clientId);
       return client;
     }
-    else {
-      throw new UnprocessableEntity('Could not update client');
-    }
+    throw new UnprocessableEntity('Could not update client');
   }
 
   async remove(clientId) {

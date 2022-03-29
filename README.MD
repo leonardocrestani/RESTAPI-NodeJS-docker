@@ -1,5 +1,20 @@
-## Projeto RESTAPI
-O projeto consiste na criação de uma API REST que possibilita a criação de cidades e clientes e associação entre eles. Para a crição foi utilizado Node.JS com o framework express juntamente do banco de dados MySQL e outras dependências
+# REST API Example
+
+## Descrição do projeto
+<p> O projeto consiste na criação de uma API REST que possibilita a criação de cidades, clientes e associação entre eles. O projeto é feito com NodeJS utilizando do framework express juntamente do banco de dados MySQL e outras dependências </p>
+
+## Features
+### Cidades
+- Cadastro de uma nova cidade
+- Listagem de uma cidade pelo seu nome
+- Listagem de todas cidades que pertencem ao mesmo estado
+### Clientes
+- Cadastro de um novo cliente
+    - O cliente sempre esta associado a sua cidade de origem
+- Listagem de um cliente pelo seu nome
+- Listagem de um cliente pelo seu ID
+- Atualização parcial dos dados de um cliente alterando seu nome completo
+- Remoção de um cliente
 
 ## Instalação com docker
 Criação do container
@@ -29,21 +44,25 @@ npm run start
 
 ## Executar testes
 Para execução dos testes é preciso que a API já esteja funcionando para que os endpoints a serem testados estejam acessíveis
+Se estiver utilizando a API localmente utilizar o comando
+```bash
+npm run start
+```
 ```bash
 npm test
 ```
 > Quando os testes forem rodados vai ser gerado automaticamente um banco sqlite e as migrations efetuadas, assim os testes vão ocorrer neste banco de testes local
 
-## Features/endpoints
+## Endpoints
 
 ### Cidades
-- Cadastra cidade '/city'
-- Consulta cidade pelo nome '/city?name='
-- Consulta todas cidades de um estado '/city?state='
+- (POST) Cadastra '/city'
+- (GET) Consulta pelo nome '/city?name='
+- (GET) Consulta cidades de um estado '/city?state='
 
 ### Clientes
-- Cadastra cliente '/client'
-- Consulta cliente pelo nome '/client?full_name='
-- Consulta cliente pelo id '/client?id='
-- Atualiza nome de cliente '/client/{id}'
-- Remove cliente '/client/{id}'
+- (POST) Cadastra '/client'
+- (GET) Consulta pelo nome '/client?full_name='
+- (GET) Consulta pelo id '/client?id='
+- (PATCH) Atualiza '/client/{id}'
+- (DELETE) Remove '/client/{id}'

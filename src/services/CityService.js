@@ -6,13 +6,11 @@ class CityService {
     if (param.state) {
       return await CityDao.findByState(param);
     } 
-    else {
-      const city = await CityDao.find(param);
-      if (!city) {
-        throw new NotFound('Informed city not found');
-      }
-      return city;
+    const city = await CityDao.find(param);
+    if (!city) {
+      throw new NotFound('Informed city not found');
     }
+    return city;
   }
 
   async register(dados) {

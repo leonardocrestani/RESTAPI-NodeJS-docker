@@ -13,11 +13,10 @@ module.exports = async (req, res, next) => {
   } 
   catch(erro) { 
     return res.status(400).json(
-      erro.details.map(detail => {
-        return {
+      erro.details.map(detail => ({
           message: detail.message,
           path: detail.path
-        } 
-      })
-  )}
+      }))
+    )
+  }
 }
