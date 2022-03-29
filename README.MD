@@ -43,11 +43,13 @@ npm run start
 > A API estará disponível na URL http://localhost:3000
 
 ## Executar testes
-Para execução dos testes é preciso que a API já esteja funcionando para que os endpoints a serem testados estejam acessíveis
-Se estiver utilizando a API localmente utilizar o comando
+Para execução dos testes é preciso que a API já esteja funcionando para que os endpoints a serem testados estejam acessíveis <br>
+Se estiver utilizando a API no container docker subir/ativar o container antes dos testes <br>
+Se estiver utilizando a API localmente iniciar ela com o comando
 ```bash
 npm run start
 ```
+Rodar testes
 ```bash
 npm test
 ```
